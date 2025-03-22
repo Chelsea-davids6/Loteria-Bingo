@@ -23,8 +23,12 @@ const PlayPage = () => {
           Play with strangers
           <span className="hover-icon"><img src={donut} alt="donut" /></span>
         </p>
-        <p className="subtitle-button">
+        <p className="subtitle-button" onClick={() => navigate('/play-with-bots')}>
           Play with bots
+          <span className="hover-icon"><img src={donut} alt="donut" /></span>
+        </p>
+        <p className="subtitle-button" onClick={() => navigate('/play-alone')}>
+          Play alone
           <span className="hover-icon"><img src={donut} alt="donut" /></span>
         </p>
       </div>
