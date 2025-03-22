@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import donut from '../assets/donut.svg';
 
+
+
 const HomePage = () => {
   const navigate = useNavigate(); 
   return (
