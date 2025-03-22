@@ -3,7 +3,7 @@
 *This project is still a work in progress!! XD*
 
 ## Overview
-Lotería Bingo is an online mobile game inspired by the traditional Mexican game, Lotería. Unlike traditional bingo, this game uses images instead of numbers, bringing a colorful and cultural twist to the experience. Players compete to achieve patterns like lines or full cards to win.
+Lotería Bingo is an online web game inspired by the traditional Mexican game, Lotería. Unlike traditional bingo, this game uses images instead of numbers, bringing a colorful and cultural twist to the experience. Players compete to achieve patterns like lines or full cards to win.
 
 ## Planned Features
 - **Interactive multiplayer Gameplay**: Play Lotería bingo in real time with others.
