@@ -20,3 +20,10 @@ Lotería Bingo is an online web game inspired by the traditional Mexican game, L
 
 ## Contact
 If you have any questions or suggestions, feel free to reach out!
+
+## TODO
+---------------------------------------------------
+## Get solo game running 
+- Created random card
+- Get a list of possible options (icons) to shuffle them then grab the  
+- 
