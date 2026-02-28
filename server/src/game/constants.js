@@ -32,11 +32,12 @@ const PATTERNS = {
   
 
 const ICONS = [
-    "bread", "apple", "avocado", "bacon", "boiled_egg", "canned_fish",
+    "apple", "avocado", "bacon", "boiled_egg", "bread", "canned_fish",
     "carrot", "cheese", "chocolate", "coconut", "coke", "corn",
     "cucumber", "egg_plant", "french_hot_dog", "hot_tea", "lemon",
-    "lollipop", "nut", "onion", "orange", "peach", "pear",
-    "popcorn"
+    "lollipop", "nut", "onion", "orange", "peach", "pear", "peppers",
+    "pomegranate", "popcorn", "potato", "salt_pepper", "snow_flake", "taco",
+    "tomato", "wine"
 ];
 
 module.exports = {

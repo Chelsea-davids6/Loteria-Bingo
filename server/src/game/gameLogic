@@ -1,3 +1,5 @@
+const { ICONS } = require('./constants');
+
 const shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -5,27 +7,27 @@ const shuffleArray = (array) => {
   }
 };
 
-const picker = () => {
-  shuffleArray(icons); 
+// const picker = () => {
+//   shuffleArray(icons); 
 
-  let iconIndex = 0;
-  const gridRows = Object.keys(grid); 
+//   let iconIndex = 0;
+//   const gridRows = Object.keys(grid); 
 
-  for (let row of gridRows) {
-      for (let col = 0; col < grid[row].length; col++) {
-          if (iconIndex < icons.length) {
-              grid[row][col] = icons[iconIndex]; 
-              iconIndex++;
-          }
-      }
-  }
-};
+//   for (let row of gridRows) {
+//       for (let col = 0; col < grid[row].length; col++) {
+//           if (iconIndex < icons.length) {
+//               grid[row][col] = icons[iconIndex]; 
+//               iconIndex++;
+//           }
+//       }
+//   }
+// };
 
-const caller = () => {
-  shuffleArray(icons);
-}
+// const caller = () => {
+//   shuffleArray(icons);
+// }
 
 
-picker();
-caller();
-console.log(grid);
+// picker();
+// caller();
+// console.log(grid);
