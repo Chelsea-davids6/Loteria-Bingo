@@ -1,33 +1,17 @@
 const { ICONS } = require('./constants');
 
 const shuffleArray = (array) => {
-  for (let i = array.length - 1; i > 0; i--) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
+  return shuffled;
+}
+
+console.log("Testing shuffle:");
+console.log(shuffleArray(ICONS).slice(0, 5));
+
+module.exports = {
+  shuffleArray
 };
-
-// const picker = () => {
-//   shuffleArray(icons); 
-
-//   let iconIndex = 0;
-//   const gridRows = Object.keys(grid); 
-
-//   for (let row of gridRows) {
-//       for (let col = 0; col < grid[row].length; col++) {
-//           if (iconIndex < icons.length) {
-//               grid[row][col] = icons[iconIndex]; 
-//               iconIndex++;
-//           }
-//       }
-//   }
-// };
-
-// const caller = () => {
-//   shuffleArray(icons);
-// }
-
-
-// picker();
-// caller();
-// console.log(grid);
