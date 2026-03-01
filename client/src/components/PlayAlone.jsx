@@ -7,17 +7,16 @@ const PlayAlone = () => {
   const [bingoCard, setBingoCard] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/call-next")
+    fetch("http://localhost:5000/api/game/start", {
+      method: "POST"
+    })
     .then((res) => res.json())
     .then((data) => {
-      setBingoCard(shuffleArray([...data.nextItems]));
+      console.log("Got data:", data); 
+      setBingoCard(data.playerCard);
     })
     .catch((error) => console.error("Error fetching bingo card:", error));  
   }, []);
-
-  function shuffleArray(array) {
-    return array.sort(() => Math.random() - 0.5);
-  }
 
   const handleGoBack = () => navigate(-1);
 
