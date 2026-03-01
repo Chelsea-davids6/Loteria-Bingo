@@ -14,17 +14,14 @@ function generatePlayerCard() {
   const totalCards = GRID_SIZE * GRID_SIZE;
 
   const cardIcons = shuffled.slice(0, totalCards);
-  console.log("Card icons:", cardIcons); 
   
 
   return {
-    icons: cardIcons
+    icons: cardIcons,
+    marked: Array(totalCards).fill(false)
   };
 
 }
-
-// console.log("Testing shuffle:");
-// console.log(shuffleArray(ICONS).slice(0, 5));
 
 module.exports = {
   shuffleArray,
