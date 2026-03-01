@@ -14,10 +14,12 @@ app.post("/api/game/start", (req, res) => {
   console.log("Starting new game");
   
   const playerCard = generatePlayerCard();
+  const gameId = `game_${Date.now()}`;
   
   res.json({
     success: true,
-    playerCard: playerCard
+    playerCard: playerCard,
+    gameId: gameId,
   });
 });
 
