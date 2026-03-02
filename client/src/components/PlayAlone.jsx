@@ -4,7 +4,7 @@ import BingoCard from "./BingoCard";
 
 const PlayAlone = () => {
   const navigate = useNavigate();
-  const [bingoCard, setBingoCard] = useState([]);
+  const [bingoCard, setBingoCard] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/game/start", {
@@ -24,7 +24,11 @@ const PlayAlone = () => {
     <div>
       <p onClick={handleGoBack} className="back-button">Back</p>
       <div className="container">
-        {bingoCard.length > 0 && <BingoCard cardImages={bingoCard} />}
+        {bingoCard ? (
+          <BingoCard cardImages={bingoCard.icons} />
+        ) : (
+          <p>Loading</p>
+        )} 
       </div>
     </div>
   );
