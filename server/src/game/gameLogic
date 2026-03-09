@@ -23,7 +23,12 @@ function generatePlayerCard() {
 
 }
 
+function generateRandomCall() {
+  return shuffleArray(ICONS);
+}
+
 module.exports = {
   shuffleArray,
-  generatePlayerCard
+  generatePlayerCard,
+  generateRandomCall
 };
