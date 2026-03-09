@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const { generatePlayerCard } = require("./src/game/gameLogic");
+const { generateRandomCall } = require("./src/game/gameLogic");
 
 const app = express();
 app.use(cors());
@@ -20,6 +21,18 @@ app.post("/api/game/start", (req, res) => {
     success: true,
     playerCard: playerCard,
     gameId: gameId,
+  });
+});
+
+app.post("/api/game/call-next", (req, res) =>  {
+  const callingOrder = generateRandomCall();
+  const nextIcon = callingOrder[0];
+
+  console.log("Calling icon:", nextIcon);
+
+  res.json({
+    success: true,
+    calledIcon: nextIcon
   });
 });
 
