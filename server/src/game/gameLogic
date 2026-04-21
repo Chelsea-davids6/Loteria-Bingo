@@ -1,4 +1,4 @@
-const { ICONS, GRID_SIZE } = require('./constants');
+const { ICONS, GRID_SIZE, WINNING_PATTERNS } = require('./constants');
 
 const shuffleArray = (array) => {
   const shuffled = [...array];
@@ -42,9 +42,22 @@ function markIcon(playerCard, iconName) {
   return updatedCard;
 }
 
+function checkForWin(playerCard) {
+  for (const [patternName, positions] of Object.entries(WINNING_PATTERNS)) {
+    const hasWon = positions.every(pos => playerCard.marked[pos] === true);
+    
+    if (hasWon) {
+      return patternName;
+    }
+  }
+  
+  return null;
+}
+
 module.exports = {
   shuffleArray,
   generatePlayerCard,
   generateRandomCall,
-  markIcon
+  markIcon,
+  checkForWin
 };

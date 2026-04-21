@@ -1,7 +1,7 @@
 const GRID_SIZE = 4; 
 const TOTAL_CARDS = 16;
 
-const PATTERNS = {
+const WINNING_PATTERNS = {
     fullCard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
 
     // Round 1 winning rows
@@ -44,5 +44,5 @@ module.exports = {
   ICONS,
   GRID_SIZE,
   TOTAL_CARDS,
-  PATTERNS
+  WINNING_PATTERNS
 };
