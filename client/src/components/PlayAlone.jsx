@@ -5,6 +5,8 @@ import BingoCard from "./BingoCard";
 const PlayAlone = () => {
   const navigate = useNavigate();
   const [bingoCard, setBingoCard] = useState(null);
+  const [gameId, setGameId] = useState(null);
+  const [calledIcons, setCalledIcons] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:5000/api/game/start", {
