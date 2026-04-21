@@ -26,5 +26,19 @@ class GameState {
 
     return nextIcon;
   }
-  
+
+  getState() {
+    return {
+        gameId: this.gameId,
+        playerCard: this.playerCard,
+        calledIcons: this.calledIcons,
+        currentIcon: this.calledIcons[this.calledIcons.length - 1] || null,
+        isActive: this.isActive,
+        winner: this.winner,
+        currentRound: this.currentRound,
+        totalCalled: this.calledIcons.length,
+        totalRemaining: this.callingOrder.length - this.currentCallIndex
+    }; 
+}
+
 }
