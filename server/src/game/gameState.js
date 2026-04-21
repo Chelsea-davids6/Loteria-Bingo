@@ -6,7 +6,7 @@ class GameState {
   constructor(gameId) {
     this.gameId = gameId;
     this.playerCard = generatePlayerCard();
-    this.callingOrder = generateCallingOrder();
+    this.callingOrder = generateRandomCall();
     this.calledIcons = [];
     this.currentCallIndex = 0;
     this.isActive = true;
@@ -39,6 +39,16 @@ class GameState {
         totalCalled: this.calledIcons.length,
         totalRemaining: this.callingOrder.length - this.currentCallIndex
     }; 
-}
+  }
 
+  setWinner(patternName) {
+    this.winner = patternName;
+    this.isActive = false;
+  }
+
+  nextRound() {
+    if (this.currentRound < 3) {
+      this.currentRound++;
+    }
+  }
 }
