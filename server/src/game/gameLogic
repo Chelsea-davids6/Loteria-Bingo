@@ -27,8 +27,24 @@ function generateRandomCall() {
   return shuffleArray(ICONS);
 }
 
+// Func to mark icon on card 
+function markIcon(playerCard, iconName) {
+  const iconIndex = playerCard.icons.indexOf(iconName);
+
+  if (iconIndex === -1) {
+    return null;
+  }
+
+  const updatedCard = {...playerCard};
+  updatedCard.marked = [...playerCard.marked];
+  updatedCard.marked[iconIndex] = true;
+
+  return updatedCard;
+}
+
 module.exports = {
   shuffleArray,
   generatePlayerCard,
-  generateRandomCall
+  generateRandomCall,
+  markIcon
 };
