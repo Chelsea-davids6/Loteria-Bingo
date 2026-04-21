@@ -52,3 +52,40 @@ class GameState {
     }
   }
 }
+
+function createGame() {
+  const gameId = generateGameId();
+  const game = new GameState(gameId);
+  games.set(gameId, game);
+  return game;
+}
+
+function getGame(gameId) {
+  return games.get(gameId);
+}
+
+function deleteGame(gameId) {
+  return games.delete(gameId);
+}
+
+function getAllGames() {
+  return Array.from(games.values()).map(game => ({
+    gameId: game.gameId,
+    isActive: game.isActive,
+    totalCalled: game.calledIcons.length,
+    currentRound: game.currentRound,
+    createdAt: game.createdAt
+  }));
+}
+
+function generateGameId() {
+  return `game_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+}
+
+module.exports = {
+  GameState,
+  createGame,
+  getGame,
+  deleteGame,
+  getAllGames
+};
