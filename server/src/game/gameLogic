@@ -54,6 +54,32 @@ function checkForWin(playerCard) {
   return null;
 }
 
+function checkRoundWin(playerCard, round) {
+  if (round === 1) {
+    const linePatterns = ['row1', 'row2', 'row3', 'row4', 'col1', 'col2', 'col3', 'col4', 'diagonal1', 'diagonal2'];
+    for (const pattern of linePatterns) {
+      const positions = WINNING_PATTERNS[pattern];
+      if (positions.every(pos => playerCard.marked[pos])) {
+        return pattern;
+      }
+    }
+  } else if (round === 2) {
+    const clusterPatterns = Object.keys(WINNING_PATTERNS).filter(key => key.startsWith('cluster'));
+    for (const pattern of clusterPatterns) {
+      const positions = WINNING_PATTERNS[pattern];
+      if (positions.every(pos => playerCard.marked[pos])) {
+        return pattern;
+      }
+    }
+  } else if (round === 3) {
+    if (WINNING_PATTERNS.fullCard.every(pos => playerCard.marked[pos])) {
+      return 'fullCard';
+    }
+  }
+  
+  return null;
+}
+
 module.exports = {
   shuffleArray,
   generatePlayerCard,
