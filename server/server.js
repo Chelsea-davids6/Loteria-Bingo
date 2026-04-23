@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { generatePlayerCard } = require("./src/game/gameLogic");
-const { generateRandomCall } = require("./src/game/gameLogic");
+const { generatePlayerCard, generateRandomCall } = require("./src/game/gameLogic");
 
 const app = express();
 app.use(cors());
@@ -9,6 +8,10 @@ app.use(express.json());
 
 app.get("/api", (req, res) => {
   res.json({ message: "Server is running!" });
+});
+
+app.get("/api/game", (req, res) => {
+  res.json({ message: "Game API is available" });
 });
 
 app.post("/api/game/start", (req, res) => {
