@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BingoCard from "./BingoCard";
+import { gameAPI } from "../api/gameService";
 
 const PlayAlone = () => {
   const navigate = useNavigate();
