@@ -85,5 +85,6 @@ module.exports = {
   generatePlayerCard,
   generateRandomCall,
   markIcon,
-  checkForWin
+  checkForWin,
+  checkRoundWin
 };

@@ -138,7 +138,7 @@ const markPlayerIcon = (req, res) => {
     game.playerCard = updatedCard;
 
     console.log("Checking round:", game.currentRound); 
-    const winningPattern = checkRoundWin(game.playerCard, game.currentRound);
+    const winningPattern = checkForWin(game.playerCard, game.currentRound);
     console.log("Winning pattern result:", winningPattern); 
 
     if (winningPattern) {
