@@ -16,7 +16,7 @@ router.get('/list', listAllGames);
 router.get('/:gameId', getGameState);
 router.post('/:gameId/call', callNextIcon);
 router.post('/:gameId/mark', markPlayerIcon);
-router.post('/:gameId/resume', resumeToNextRound); // NEW
+router.post('/:gameId/resume', resumeToNextRound); 
 router.delete('/:gameId', endGame);
 
 module.exports = router;

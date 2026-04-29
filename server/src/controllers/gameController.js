@@ -90,3 +90,9 @@ const callNextIcon = (req, res) => {
     });
   }
 };
+
+module.exports = {
+  startNewGame,
+  getGameState,
+  callNextIcon
+};

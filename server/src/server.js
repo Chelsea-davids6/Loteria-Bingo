@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const { generatePlayerCard, generateRandomCall } = require("./src/game/gameLogic");
-
+const gameRoutes = require('./routes/gameRoutes');
 const app = express();
 app.use(cors());
 app.use(express.json());
