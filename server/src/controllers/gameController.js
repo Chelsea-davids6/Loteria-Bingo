@@ -213,10 +213,57 @@ const resumeToNextRound = (req, res) => {
   }
 };
 
+const endGame = (req, res) => {
+  try {
+    const { gameId } = req.params;
+    const deleted = deleteGame(gameId);
+
+    if (!deleted) {
+      return res.status(404).json({
+        success: false,
+        message: 'Game not found'
+      });
+    }
+
+    res.json({
+      success: true,
+      message: 'Game ended successfully'
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error ending game',
+      error: error.message
+    });
+  }
+};
+
+const listAllGames = (req, res) => {
+  try {
+    const games = getAllGames();
+
+    res.json({
+      success: true,
+      data: {
+        totalGames: games.length,
+        games
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching games',
+      error: error.message
+    });
+  }
+};
 
 module.exports = {
   startNewGame,
   getGameState,
   callNextIcon,
-  markPlayerIcon
+  markPlayerIcon,
+  resumeToNextRound,
+  endGame,
+  listAllGames
 };

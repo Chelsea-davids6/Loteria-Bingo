@@ -10,7 +10,7 @@ const PlayAlone = () => {
   const [calledIcons, setCalledIcons] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/game/start", {
+    fetch("http://localhost:5001/api/game/start", {
       method: "POST"
     })
     .then((res) => res.json())

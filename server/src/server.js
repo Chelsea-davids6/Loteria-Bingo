@@ -2,42 +2,57 @@ const express = require("express");
 const cors = require("cors");
 const gameRoutes = require('./routes/gameRoutes');
 const app = express();
-app.use(cors());
+const PORT = process.env.PORT || 5001;
+
+const corsOptions = {
+  origin: ["http://localhost:5173"],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/api", (req, res) => {
-  res.json({ message: "Server is running!" });
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
+  next();
 });
 
-app.get("/api/game", (req, res) => {
-  res.json({ message: "Game API is available" });
-});
+app.use('/api/game', gameRoutes);
 
-app.post("/api/game/start", (req, res) => {
-  console.log("Starting new game");
-  
-  const playerCard = generatePlayerCard();
-  const gameId = `game_${Date.now()}`;
-  
+app.get('/', (req, res) => {
   res.json({
-    success: true,
-    playerCard: playerCard,
-    gameId: gameId,
+    message: 'Lotería Bingo API',
+    version: '2.0.0',
+    endpoints: {
+      legacy: 'GET /api',
+      startGame: 'POST /api/game/start',
+      getGame: 'GET /api/game/:gameId',
+      callIcon: 'POST /api/game/:gameId/call',
+      markIcon: 'POST /api/game/:gameId/mark',
+      endGame: 'DELETE /api/game/:gameId',
+      listGames: 'GET /api/game/list'
+    }
   });
 });
 
-app.post("/api/game/call-next", (req, res) =>  {
-  const callingOrder = generateRandomCall();
-  const nextIcon = callingOrder[0];
-
-  console.log("Calling icon:", nextIcon);
-
-  res.json({
-    success: true,
-    calledIcon: nextIcon
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: 'Route not found'
   });
 });
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    success: false,
+    message: 'Internal server error',
+    error: process.env.NODE_ENV === 'development' ? err.message : undefined
+  });
+});
+
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log(`🌐 API URL: http://localhost:${PORT}`);
 });

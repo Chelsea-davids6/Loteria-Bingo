@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api/game';
+const API_URL = 'http://localhost:5001/api/game';
 
 export const gameAPI = {
 
