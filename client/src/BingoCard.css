@@ -4,12 +4,15 @@
   background-color: #DEAD69;
   padding: 20px;
   text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .bingo-title {
   font-family: "ChelseaMarket", sans-serif;
   font-size: 24px;
   color: white;
+  margin-bottom: 10px;
 }
 
 .bingo-grid {
@@ -18,24 +21,74 @@
   grid-template-rows: repeat(4, 1fr);
   width: 85%;
   margin-left: 6%;
+  gap: 4px;
 }
 
 .bingo-cell {
   width: 100%; 
   height: 100%; 
   background-color: white;
-  border: 1px solid black;
+  border: 2px solid #333;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bingo-cell:hover {
+  transform: scale(1.05);
+  border-color: #174473;
+}
+
+
+/* .bingo-cell.callable {
+  border-color: #4CAF50;
+  border-width: 3px;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+} */
+
+@keyframes pulse {
+  0%, 100% {
+    border-color: #4CAF50;
+  }
+  50% {
+    border-color: #81C784;
+  }
+}
+
+.bingo-cell.marked {
+  background-color: rgba(76, 175, 80, 0.3);
+  border-color: #2e7d32;
+}
+
+.bingo-cell.marked:hover {
+  cursor: default;
+  transform: none;
 }
 
 .bingo-cell img {
   max-width: 100%;
   max-height: 100%;
+  display: block;
+}
+
+
+.mark-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  color: #2e7d32;
+  font-weight: bold;
+  pointer-events: none;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
 }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center; 
-  height: 100vh; 
+  min-height: 500px;
+  margin-top: 20px;
 }
-  

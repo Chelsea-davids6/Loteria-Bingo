@@ -1,0 +1,172 @@
+.play-alone-page {
+  min-height: 100vh;
+  padding-bottom: 140px;
+}
+
+.game-info {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.current-icon-display {
+  margin: 20px 0;
+}
+
+.icon-badge {
+  display: inline-block;
+  background-color: #FFDFA0;
+  color: #174473;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-family: 'ChelseaMarket', sans-serif;
+  font-size: 20px;
+  margin-top: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.game-button {
+  font-family: 'ChelseaMarket', sans-serif;
+  background-color: #FFDFA0;
+  color: #174473;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.game-button:hover:not(:disabled) {
+  background-color: #FFC573;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.game-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 400px;
+  border: 2px solid #ef5350;
+  font-family: 'ChelseaMarket', sans-serif;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
+.loading {
+  text-align: center;
+  font-family: 'ChelseaMarket', sans-serif;
+  color: #174473;
+  font-size: 24px;
+  margin-top: 50px;
+}
+
+.winner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.winner-modal {
+  background: #FFF7E7;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  max-width: 500px;
+  animation: scaleIn 0.5s ease-out;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.winner-title {
+  font-size: 4em;
+  color: #DEAD69;
+  margin: 20px 0;
+  font-family: 'ChelseaMarket', sans-serif;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .game-controls {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 20px;
+  }
+
+  .game-button {
+    width: 100%;
+  }
+
+  .winner-modal {
+    margin: 20px;
+    padding: 30px 20px;
+  }
+
+  .winner-title {
+    font-size: 3em;
+  }
+}
