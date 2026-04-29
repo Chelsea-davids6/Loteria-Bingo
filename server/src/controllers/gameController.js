@@ -185,6 +185,34 @@ const markPlayerIcon = (req, res) => {
   }
 };
 
+const resumeToNextRound = (req, res) => {
+  try {
+    const { gameId } = req.params;
+    const game = getGame(gameId);
+
+    if (!game) {
+      return res.status(404).json({
+        success: false,
+        message: 'Game not found'
+      });
+    }
+
+    game.resumeGame();
+
+    res.json({
+      success: true,
+      message: `Starting Round ${game.currentRound}!`,
+      data: game.getState()
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error resuming game',
+      error: error.message
+    });
+  }
+};
+
 
 module.exports = {
   startNewGame,
