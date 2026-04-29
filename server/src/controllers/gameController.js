@@ -91,8 +91,104 @@ const callNextIcon = (req, res) => {
   }
 };
 
+const markPlayerIcon = (req, res) => {
+  try {
+    const { gameId } = req.params;
+    const { iconName } = req.body;
+
+    if (!iconName) {
+      return res.status(400).json({
+        success: false,
+        message: 'Icon name is required'
+      });
+    }
+
+    const game = getGame(gameId);
+
+    if (!game) {
+      return res.status(404).json({
+        success: false,
+        message: 'Game not found'
+      });
+    }
+
+    if (game.gameComplete) {
+      return res.status(400).json({
+        success: false,
+        message: 'Game is already complete!'
+      });
+    }
+
+    if (!game.calledIcons.includes(iconName)) {
+      return res.status(400).json({
+        success: false,
+        message: 'This icon has not been called yet'
+      });
+    }
+
+    const updatedCard = markIcon(game.playerCard, iconName);
+
+    if (!updatedCard) {
+      return res.status(400).json({
+        success: false,
+        message: 'Icon not found on your card'
+      });
+    }
+
+    game.playerCard = updatedCard;
+
+    console.log("Checking round:", game.currentRound); 
+    const winningPattern = checkRoundWin(game.playerCard, game.currentRound);
+    console.log("Winning pattern result:", winningPattern); 
+
+    if (winningPattern) {
+      const previousRound = game.currentRound; 
+      game.completeRound(game.currentRound);
+      
+      let message;
+      if (previousRound === 1) {
+        message = 'Round 1 Complete! Next: Find a Cluster!';
+      } else if (previousRound === 2) {
+        message = 'Round 2 Complete! Final Round: Blackout!';
+      } else if (previousRound === 3) {
+        message = 'BLACKOUT! You won the game!';
+      }
+
+      return res.json({
+        success: true,
+        message: message,
+        data: {
+          roundWon: winningPattern,
+          currentRound: game.currentRound,
+          gameComplete: game.gameComplete,
+          isPaused: game.isPaused,
+          gameState: game.getState()
+        }
+      });
+    }
+
+    res.json({
+      success: true,
+      message: 'Icon marked',
+      data: {
+        hasWon: false,
+        gameState: game.getState()
+      }
+    });
+  } catch (error) {
+    console.error("Error in markPlayerIcon:", error);
+    res.status(500).json({
+      success: false,
+      message: 'Error marking icon',
+      error: error.message
+    });
+  }
+};
+
+
 module.exports = {
   startNewGame,
   getGameState,
-  callNextIcon
+  callNextIcon,
+  markPlayerIcon
 };
