@@ -56,24 +56,21 @@ function checkForWin(playerCard) {
 
 function checkRoundWin(playerCard, round) {
   if (round === 1) {
-    const linePatterns = ['row1', 'row2', 'row3', 'row4', 'col1', 'col2', 'col3', 'col4', 'diagonal1', 'diagonal2'];
-    for (const pattern of linePatterns) {
-      const positions = WINNING_PATTERNS[pattern];
+    for (const positions of WINNING_PATTERNS.lines) {
       if (positions.every(pos => playerCard.marked[pos])) {
-        return pattern;
+        return 'line';
       }
     }
   } else if (round === 2) {
-    const clusterPatterns = Object.keys(WINNING_PATTERNS).filter(key => key.startsWith('cluster'));
-    for (const pattern of clusterPatterns) {
+    for (const positions of WINNING_PATTERNS.clusters3x3) {
       const positions = WINNING_PATTERNS[pattern];
       if (positions.every(pos => playerCard.marked[pos])) {
-        return pattern;
+        return 'cluster';
       }
     }
   } else if (round === 3) {
     if (WINNING_PATTERNS.fullCard.every(pos => playerCard.marked[pos])) {
-      return 'fullCard';
+      return 'blackout';
     }
   }
   
@@ -85,6 +82,6 @@ module.exports = {
   generatePlayerCard,
   generateRandomCall,
   markIcon,
-  checkForWin,
+  // checkForWin,
   checkRoundWin
 };

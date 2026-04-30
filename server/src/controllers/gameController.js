@@ -1,5 +1,5 @@
 const { createGame, getGame, deleteGame, getAllGames } = require('../game/gameState');
-const { markIcon, checkForWin } = require('../game/gameLogic');
+const { markIcon, checkRoundWin } = require('../game/gameLogic');
 
 const startNewGame = (req, res) => {
   try {
@@ -138,7 +138,7 @@ const markPlayerIcon = (req, res) => {
     game.playerCard = updatedCard;
 
     console.log("Checking round:", game.currentRound); 
-    const winningPattern = checkForWin(game.playerCard, game.currentRound);
+    const winningPattern = checkRoundWin(game.playerCard, game.currentRound);
     console.log("Winning pattern result:", winningPattern); 
 
     if (winningPattern) {
