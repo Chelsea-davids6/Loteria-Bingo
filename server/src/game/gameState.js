@@ -57,6 +57,20 @@ class GameState {
       this.currentRound++;
     }
   }
+
+  resumeGame() {
+    this.isPaused = false;
+  }
+
+  completeRound(roundNumber) {
+    if (roundNumber === 3) {
+      this.gameComplete = true;
+      this.isActive = false;
+    } else {
+      this.currentRound = roundNumber + 1;
+      this.isPaused = true;
+    }
+}
 }
 
 function createGame() {
