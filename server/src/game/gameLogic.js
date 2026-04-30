@@ -63,7 +63,6 @@ function checkRoundWin(playerCard, round) {
     }
   } else if (round === 2) {
     for (const positions of WINNING_PATTERNS.clusters3x3) {
-      const positions = WINNING_PATTERNS[pattern];
       if (positions.every(pos => playerCard.marked[pos])) {
         return 'cluster';
       }
