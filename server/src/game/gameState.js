@@ -13,6 +13,9 @@ class GameState {
     this.winner = null;
     this.currentRound = 1; 
     this.createdAt = new Date();
+    this.roundsWon = []; 
+    this.isPaused = false; 
+    this.gameComplete = false; 
  }
 
   callNextIcon() {
@@ -36,6 +39,9 @@ class GameState {
         isActive: this.isActive,
         winner: this.winner,
         currentRound: this.currentRound,
+        roundsWon: this.roundsWon,
+        isPaused: this.isPaused,
+        gameComplete: this.gameComplete,
         totalCalled: this.calledIcons.length,
         totalRemaining: this.callingOrder.length - this.currentCallIndex
     }; 
