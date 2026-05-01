@@ -21,12 +21,3 @@ Lotería Bingo is an online web game inspired by the traditional Mexican game, L
 ## Contact
 If you have any questions or suggestions, feel free to reach out!
 
-## TODO
----------------------------------------------------
-## Get solo game running 
-- Create the user's card with the icon positions 
-- Get a list of random options (icons) to be called that game 
-- Remove the called icons from its current list and put it in a new list called the selected list (bc its icons that have been selected before)
-- Create a func that compares the users list to the seletced list
-- The backend shou;d know before the user if the user has a bingo or not
-- 
