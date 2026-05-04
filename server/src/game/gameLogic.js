@@ -76,11 +76,27 @@ function checkRoundWin(playerCard, round) {
   return null;
 }
 
+function checkRoundPoss(playerCard, calledIcons, round) {
+  const calledSet = new Set(calledIcons);
+  const isCalledAt = (pos) => calledSet.has(playerCard.icons[pos]);
+ 
+  if (round === 1) {
+    return WINNING_PATTERNS.lines.some(positions => positions.every(isCalledAt));
+  } else if (round === 2) {
+    return WINNING_PATTERNS.clusters3x3.some(positions => positions.every(isCalledAt));
+  } else if (round === 3) {
+    return WINNING_PATTERNS.fullCard.every(isCalledAt);
+  }
+ 
+  return false;
+}
+
 module.exports = {
   shuffleArray,
   generatePlayerCard,
   generateRandomCall,
   markIcon,
   // checkForWin,
-  checkRoundWin
+  checkRoundWin,
+  checkRoundPoss
 };
