@@ -1,14 +1,24 @@
 @font-face {
   font-family: 'ChelseaMarket'; 
-  src: url('./assets/ChelseaMarket.ttf') format('truetype');
+  src: url('./assets/PenguinAttack.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-body {
+/* body {
   font-family: 'ChelseaMarket', sans-serif; 
   background-color: #FFF7E7;
   text-align: center; 
+} */
+
+body {
+  font-family: 'ChelseaMarket', sans-serif;
+  background-image: url('/Images/whismy.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  text-align: center;
 }
 
 .home-page {
@@ -17,8 +27,8 @@ body {
 }
 
 .title {
-  color: #174473;
-  font-size: 50px;
+  color: #f57d9f;
+  font-size: 80px;
   margin-bottom: 20px; 
 }
 
@@ -48,7 +58,7 @@ body {
   text-align: center;
 }
 
-.bottom-container {
+/* .bottom-container {
   position: fixed; 
   bottom: 0; 
   left: 0; 
@@ -59,7 +69,7 @@ body {
   justify-content: center; 
   align-items: center; 
   z-index: 1000; 
-}
+} */
 
 .image {
   width: 200px; 

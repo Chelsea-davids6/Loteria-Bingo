@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <header>
-        <h1 className="title">Welcome to Lotería Bingo!</h1>
+        <h1 className="title">Welcome to Loteria Bingo!</h1>
         <p className="subtitle-button" onClick={() => navigate('/play')}>
           Play Now
           <span className="hover-icon"><img src={donut} alt="donut" /></span>
