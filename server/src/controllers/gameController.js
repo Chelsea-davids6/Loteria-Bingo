@@ -1,5 +1,30 @@
 const { createGame, getGame, deleteGame, getAllGames } = require('../game/gameState');
-const { markIcon, checkRoundWin } = require('../game/gameLogic');
+const { markIcon, checkRoundWin, checkRoundPoss } = require('../game/gameLogic');
+
+const CLAIM_WINDOW = 2;
+
+function updateClaimWindow(game) {
+  if (game.roundAchievedAt == null &&
+      checkRoundPoss(game.playerCard, game.calledIcons, game.currentRound)) {
+    game.roundAchievedAt = game.calledIcons.length;
+  }
+}
+
+function getClaimStatus(game) {
+  if (game.roundAchievedAt == null) {
+    return { claimable: false, expired: false, callsRemaining: null, achievedAt: null };
+  }
+  const elapsed = game.calledIcons.length - game.roundAchievedAt;
+  if (elapsed > CLAIM_WINDOW) {
+    return { claimable: false, expired: true, callsRemaining: 0, achievedAt: game.roundAchievedAt };
+  }
+  return {
+    claimable: true,
+    expired: false,
+    callsRemaining: CLAIM_WINDOW - elapsed,
+    achievedAt: game.roundAchievedAt
+  };
+}
 
 const startNewGame = (req, res) => {
   try {
