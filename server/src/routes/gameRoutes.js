@@ -7,7 +7,8 @@ const {
   markPlayerIcon,
   endGame,
   listAllGames,
-  resumeToNextRound 
+  resumeToNextRound,
+  claimBingo
 } = require('../controllers/gameController');
 
 // Game routes
@@ -18,5 +19,6 @@ router.post('/:gameId/call', callNextIcon);
 router.post('/:gameId/mark', markPlayerIcon);
 router.post('/:gameId/resume', resumeToNextRound); 
 router.delete('/:gameId', endGame);
+router.post('/:gameId/claim', claimBingo);
 
 module.exports = router;

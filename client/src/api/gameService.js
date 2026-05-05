@@ -79,6 +79,27 @@ export const gameAPI = {
     }
   },
 
+  claimBingo: async (gameId) => {
+    try {
+      const response = await fetch(`${API_URL}/${gameId}/claim`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+ 
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to claim bingo');
+      }
+ 
+      return await response.json();
+    } catch (error) {
+      console.error('Error claiming bingo:', error);
+      throw error;
+    }
+  },
+
    resumeToNextRound: async (gameId) => {
     try {
       const response = await fetch(`${API_URL}/${gameId}/resume`, {

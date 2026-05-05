@@ -15,6 +15,45 @@
   margin-bottom: 10px;
 }
 
+.star-icon {
+  cursor: pointer;
+  vertical-align: middle;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.star-icon:hover {
+  transform: scale(1.15);
+}
+
+.star-icon:active {
+  transform: scale(0.95);
+}
+
+
+.star-icon.spinning {
+  animation: star-spin 1.4s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 105, 180, 0.7));
+}
+
+.star-icon.shaking {
+  animation: star-shake 0.5s ease-in-out;
+}
+
+@keyframes star-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes star-shake {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  20%      { transform: translateX(-8px) rotate(-10deg); }
+  40%      { transform: translateX(8px) rotate(10deg); }
+  60%      { transform: translateX(-6px) rotate(-6deg); }
+  80%      { transform: translateX(6px) rotate(6deg); }
+}
+
+
 .bingo-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -91,4 +130,4 @@
   align-items: center; 
   min-height: 500px;
   margin-top: 20px;
-}
+    }
